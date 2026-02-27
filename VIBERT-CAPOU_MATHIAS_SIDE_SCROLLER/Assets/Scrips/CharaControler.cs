@@ -3,14 +3,18 @@ using UnityEngine;
 public class CharaControler : MonoBehaviour
 {
     [Header("Move variable")]
-    [SerializeField] float movespeed = 5f;
-    [SerializeField] float acceleration = 20f;
+    [SerializeField] float WalkSpeed = 5f;
+    [SerializeField] float RunSpeed = 10f;
+
+    private float currentSpeed;
+    Rigidbody2D rb;
+    private Vector2 movement;
+    //[SerializeField] float acceleration = 20f;
 
     [Header("Gravity/Jump")]
     [SerializeField] float gravity = -10f;
     [SerializeField] float jumpForce = 1.5f;
 
-    Rigidbody2D rb;
     float inputX;
     public LayerMask groundLayer;
 
@@ -27,6 +31,15 @@ public class CharaControler : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded) rb.linearVelocity = new Vector2 (rb.linearVelocity.x, jumpForce);
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed = RunSpeed;
+        }
+        else
+        {
+            currentSpeed = WalkSpeed;
+        }
+
 
         /*
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -37,9 +50,10 @@ public class CharaControler : MonoBehaviour
     void FixedUpdate()
     {
         var v = rb.linearVelocity;
-        v.x = inputX * movespeed;
+        v.x = inputX * currentSpeed;
 
         rb.linearVelocity = v;
         //rb.linearVelocity = input * movespeed;
     }
+
 }
