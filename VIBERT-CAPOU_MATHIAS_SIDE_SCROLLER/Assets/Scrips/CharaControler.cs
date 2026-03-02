@@ -55,8 +55,6 @@ public class CharaControler : MonoBehaviour
         var v = rb.linearVelocity;
         v.x = inputX * currentSpeed;
 
-        
-
         rb.linearVelocity = v;
         //rb.linearVelocity = input * movespeed;
     }
