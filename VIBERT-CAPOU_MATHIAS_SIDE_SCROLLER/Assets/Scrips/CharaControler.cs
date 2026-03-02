@@ -18,6 +18,8 @@ public class CharaControler : MonoBehaviour
     float inputX;
     public LayerMask groundLayer;
 
+    bool isGrounded = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,9 +29,10 @@ public class CharaControler : MonoBehaviour
     {
         inputX = Input.GetAxisRaw("Horizontal");
 
-        bool isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
 
-        if (Input.GetButtonDown("Jump") && isGrounded) rb.linearVelocity = new Vector2 (rb.linearVelocity.x, jumpForce);
+        if (Input.GetButtonDown("Jump") && isGrounded) rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -51,6 +54,8 @@ public class CharaControler : MonoBehaviour
     {
         var v = rb.linearVelocity;
         v.x = inputX * currentSpeed;
+
+        
 
         rb.linearVelocity = v;
         //rb.linearVelocity = input * movespeed;
