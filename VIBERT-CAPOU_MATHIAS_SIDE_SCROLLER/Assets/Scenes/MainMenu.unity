@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4961756bdb0cc4a9fe84e2044f6df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonManager
+  SettingsWindow: {fileID: 1860181012}
 --- !u!1 &203665169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4961756bdb0cc4a9fe84e2044f6df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  SettingsWindow: {fileID: 1860181012}
 --- !u!114 &617786601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1590,8 +1592,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1521496858}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1968,7 +1970,7 @@ RectTransform:
   m_Father: {fileID: 1065483942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2103,6 +2105,7 @@ GameObject:
   - component: {fileID: 1286876949}
   - component: {fileID: 1286876948}
   - component: {fileID: 1286876947}
+  - component: {fileID: 1286876951}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2196,6 +2199,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1286876951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286876946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4961756bdb0cc4a9fe84e2044f6df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonManager
+  SettingsWindow: {fileID: 1860181012}
 --- !u!1 &1387940350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,7 +2507,6 @@ GameObject:
   - component: {fileID: 1699797191}
   - component: {fileID: 1699797190}
   - component: {fileID: 1699797189}
-  - component: {fileID: 1699797192}
   m_Layer: 5
   m_Name: ButtonSettings
   m_TagString: Untagged
@@ -2563,7 +2578,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1699797192}
+      - m_Target: {fileID: 1286876951}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: SettingsButton
         m_Mode: 1
@@ -2613,18 +2628,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699797187}
   m_CullTransparentMesh: 1
---- !u!114 &1699797192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699797187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4961756bdb0cc4a9fe84e2044f6df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonManager
 --- !u!1 &1714040588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,7 +2800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1860181013
 RectTransform:
   m_ObjectHideFlags: 0

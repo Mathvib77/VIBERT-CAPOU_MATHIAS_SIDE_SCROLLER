@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    public GameObject SettingsWindow;
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
@@ -10,8 +11,16 @@ public class ButtonManager : MonoBehaviour
 
     public void SettingsButton()
     {
-        Debug.Log("Settings Button Clicked");
-        // Implement settings functionality here
+        SettingsWindow.SetActive(true);
+    }
+
+    private void Update()
+    {
+       
+        if (SettingsWindow.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            SettingsWindow.SetActive(false);
+        }
     }
 
     public void QuitGame()
@@ -20,4 +29,4 @@ public class ButtonManager : MonoBehaviour
         Application.Quit();
     }
 
-}
+} 
