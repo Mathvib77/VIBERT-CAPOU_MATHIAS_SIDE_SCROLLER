@@ -20,9 +20,13 @@ public class CharaControler : MonoBehaviour
 
     bool isGrounded = false;
 
+    Animator animator;
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update ()
@@ -31,23 +35,41 @@ public class CharaControler : MonoBehaviour
 
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, groundLayer);
 
-        if (Input.GetButtonDown("Jump") && isGrounded) rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-
-
-        if (Input.GetKey(KeyCode.LeftShift))
+        //Jump
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            currentSpeed = RunSpeed;
-        }
-        else
-        {
-            currentSpeed = WalkSpeed;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            if (animator != null) animator.SetBool("isJumping", true);
         }
 
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        currentSpeed = isRunning ? RunSpeed : WalkSpeed;
 
-        /*
-        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        input.Normalize();
-        */
+        if (animator != null)
+        {
+            if (!isGrounded)
+            {
+                animator.SetFloat("Speed", 0f);
+                animator.SetBool("isJumping", false);
+            }
+            else
+            {
+                animator.SetFloat("Speed", Mathf.Abs(inputX));
+                animator.SetBool("IsRunning", isRunning);
+            }
+            if (isGrounded) animator.SetBool("isJumping", false);
+        }
+
+
+        //if (Input.GetKey(KeyCode.LeftShift))
+        //{
+        //    currentSpeed = RunSpeed;
+       // }
+        //else
+        //{
+           // currentSpeed = WalkSpeed;
+        //}
+
     }
 
     void FixedUpdate()
