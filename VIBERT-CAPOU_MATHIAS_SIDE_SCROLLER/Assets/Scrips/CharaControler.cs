@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class CharaControler : MonoBehaviour
@@ -21,6 +22,7 @@ public class CharaControler : MonoBehaviour
     bool isGrounded = false;
 
     Animator animator;
+    public SpriteRenderer spriteRenderer;
 
 
     void Awake()
@@ -79,6 +81,18 @@ public class CharaControler : MonoBehaviour
 
         rb.linearVelocity = v;
         //rb.linearVelocity = input * movespeed;
-    }
 
+        Flip(rb.linearVelocity.x);
+    }
+    void Flip(float _velocity)
+    {
+        if (_velocity > 0.1f)
+        {
+           spriteRenderer.flipX = false;
+        }
+        else if (_velocity < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
+    }
 }
