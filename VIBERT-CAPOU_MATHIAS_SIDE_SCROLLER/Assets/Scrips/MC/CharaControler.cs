@@ -59,7 +59,7 @@ public class CharaControler : MonoBehaviour
                 animator.SetFloat("Speed", Mathf.Abs(inputX));
                 animator.SetBool("IsRunning", isRunning);
             }
-            if (isGrounded) animator.SetBool("isJumping", false);
+            if (isGrounded) animator.SetBool("isJumping", true);
         }
 
 
