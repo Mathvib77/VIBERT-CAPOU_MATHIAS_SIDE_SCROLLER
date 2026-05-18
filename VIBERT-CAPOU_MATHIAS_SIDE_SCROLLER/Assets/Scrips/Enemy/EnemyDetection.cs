@@ -11,19 +11,21 @@ public class EnemyDetection : MonoBehaviour
 
     void Update()
     {
-        Collider2D hit = Physics2D.OverlapCircle(
-            transform.position, detectionRange, playerLayer
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            transform.position, detectionRange
         );
 
-        if (hit != null)
+        playerDetected = false;
+        playerTransform = null;
+
+        foreach (Collider2D hit in hits)
         {
-            playerDetected = true;
-            playerTransform = hit.transform;
-        }
-        else
-        {
-            playerDetected = false;
-            playerTransform = null;
+            if (hit.CompareTag("Player"))
+            {
+                playerDetected = true;
+                playerTransform = hit.transform;
+                break;
+            }
         }
     }
 
