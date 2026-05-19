@@ -6,13 +6,13 @@ public class DeathZone : MonoBehaviour
 
     private void Awake()
     {
-        playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform; //Finds the players spawn point
+        playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform; 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-           collision.transform.position = playerSpawn.position; //Moves the player to the spawn point
+           collision.transform.position = playerSpawn.position; 
             Debug.Log("Player has died");
         }
     }
